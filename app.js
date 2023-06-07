@@ -14,14 +14,14 @@ app.use(express.static("storage"));
 
 const port = process.env.PORT || 3000;
 
-morganBody(app, {
-  skip: function (req, res) {
-    return (
-      [403, 404, 409, 401].includes(res.statusCode) || res.statusCode < 400
-    );
-  },
-  stream: loggerSlack,
-});
+// morganBody(app, {
+//   skip: function (req, res) {
+//     return (
+//       [403, 404, 409, 401].includes(res.statusCode) || res.statusCode < 400
+//     );
+//   },
+//   stream: loggerSlack,
+// });
 
 /**
  * API - Documentation
