@@ -68,7 +68,7 @@ router.post("/register", validateRegister, registerCtrl);
  *         description: Error of validation in the data for login.
  *       401:
  *         description: Invalid credentials.
- * */
+ */
 router.post("/login", validateLogin, loginCtrl);
 
 module.exports = router;

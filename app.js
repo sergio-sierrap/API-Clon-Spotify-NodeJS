@@ -12,14 +12,14 @@ app.use(express.static("storage"));
 const port = process.env.PORT || 3000;
 
 /**
- * API Rest
- */
-app.use("/api", require("./src/routes"));
-
-/**
  * API - Documentation
  */
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+/**
+ * API Rest
+ */
+app.use("/api", require("./src/routes"));
 
 app.listen(port, () =>
   console.log(`Backend App is running at http://localhost:${port} in development mode`)

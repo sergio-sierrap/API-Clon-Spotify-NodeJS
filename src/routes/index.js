@@ -1,6 +1,6 @@
 const fs = require('fs')
-const epxress = require('express')
-const router = epxress.Router()
+const express = require('express')
+const router = express.Router()
 
 const pathRouter = `${__dirname}`
 
