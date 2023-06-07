@@ -51,4 +51,5 @@ const TracksScheme = new mongoose.Schema(
 TracksScheme.plugin(mongoosePaginate);
 TracksScheme.plugin(mongoosePaginateAggregate);
 TracksScheme.plugin(mongoseDelete, { overrideMethods: true, deletedAt:true })
-module.exports = mongoose.model("tracks", TracksScheme);
+const tracksModel = mongoose.model("tracks", TracksScheme);
+module.exports = { tracksModel }

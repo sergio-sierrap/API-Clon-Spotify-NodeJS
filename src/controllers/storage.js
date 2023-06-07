@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../../services/handleError");
-const { storageModel } = require("../models");
+const { storageModel } = require("../models/storage");
 const optionsPaginate = require("../../backend/database/mongoPaginate");
 
 const URL_PUBLIC = process.env.URL_PUBLIC || null;

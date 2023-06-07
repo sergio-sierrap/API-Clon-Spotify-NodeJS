@@ -32,4 +32,5 @@ UserScheme.index({ email: 1 });
 UserScheme.plugin(mongoosePaginate);
 UserScheme.plugin(mongoosePaginateAggregate);
 UserScheme.plugin(mongoseDelete, { overrideMethods: true, deletedAt: true });
-module.exports = mongoose.model("users", UserScheme);
+const userModel = mongoose.model("users", UserScheme);
+module.exports = { userModel }

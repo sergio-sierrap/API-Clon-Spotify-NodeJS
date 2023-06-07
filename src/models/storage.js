@@ -17,4 +17,5 @@ const StorageScheme = new mongoose.Schema(
 );
 StorageScheme.plugin(mongoosePaginate);
 StorageScheme.plugin(mongoosePaginateAggregate);
-module.exports = mongoose.model("storage", StorageScheme);
+const storageModel = mongoose.model("storage", StorageScheme);
+module.exports = { storageModel };
