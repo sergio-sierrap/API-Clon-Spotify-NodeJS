@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const { matchedData } = require("express-validator");
-const { handleHttpError } = require("../utils/handleError");
-const { tracksModel } = require("../models");
-const optionsPaginate = require("../config/paginationParams");
+const { handleHttpError } = require("../../services/handleError");
+const { tracksModel } = require("../models/tracks");
+const optionsPaginate = require("../../backend/database/mongoPaginate");
 
 /**
  * Get detail by single row

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { registerCtrl, loginCtrl } = require("../controllers/auth");
-const { validateRegister, validateLogin } = require("../validators/auth");
+const { validateRegister, validateLogin } = require("../../backend/validators/auth");
 
 /**
  * @swagger

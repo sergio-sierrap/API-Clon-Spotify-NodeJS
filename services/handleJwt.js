@@ -10,7 +10,6 @@ const encrypt = async (textPlain) => {
   return hash;
 };
 
-
 /**
  * Comparte password with hash
  * @param {*} passwordPlain 

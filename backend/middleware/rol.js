@@ -1,6 +1,6 @@
-const { verifyToken } = require("../utils/handleToken");
-const { handleErrorResponse } = require("../utils/handleError");
-const { userModel } = require("../models");
+const { verifyToken } = require("../../services/handleToken");
+const { handleErrorResponse } = require("../../services/handleError");
+const { userModel } = require("../../src/models/users");
 
 const checkRoleAuth = (roles) => async (req, res, next) => {
   try {
