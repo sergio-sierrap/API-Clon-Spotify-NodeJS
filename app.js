@@ -4,7 +4,7 @@ const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
 const app = express();
 const dbConnectNoSql = require("./src/backend/database/mongo");
-const swaggerSpec = require("./src/backend/docs/swagger");
+const openapiSpecification = require("./src/backend/docs/swagger");
 app.use(cors());
 app.use(express.json());
 app.use(express.static("storage"));
@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 /**
  * API - Documentation
  */
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 /**
  * API Rest

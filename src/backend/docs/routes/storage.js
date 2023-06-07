@@ -1,18 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const { getItem, getItems, updateItem, createItem, deleteItem} = require("../controllers/tracks");
-const authMiddleware = require("../backend/middleware/auth");
-const authRolMiddleware = require("../backend/middleware/rol");
-const { validateId, validateObjectDataCreate, validateObjectDataUpdate} = require("../backend/validators/tracks");
+const { getItem, getItems, createItem, deleteItem } = require("../controllers/storage");
+const { validateId } = require("../backend/validators/storage");
+const { upload } = require("../services/handleStore");
 /**
- * Get all tracks
+ * Upload file storage
  * @swagger
- * /tracks:
- *    get:
+ * /storage:
+ *    post:
  *      tags:
- *        - tracks
- *      summary: "List all tracks"
- *      description: List all tracks with details
+ *        - storage
+ *      summary: "Post file .mp3"
+ *      description: List all storage with details
  *      security:
  *        - bearerAuth: []
  *      responses:
@@ -24,16 +23,16 @@ const { validateId, validateObjectDataCreate, validateObjectDataUpdate} = requir
  *      '201':
  *        description: retorna el objeto insertado en la coleccion con stado '201'
  */
-router.get("/", authMiddleware, getItems);
+router.post("/", upload.single("file"), createItem);
 /**
- * Get track
+ * Get list storages
  * @swagger
- * /tracks/{id}:
+ * /storage:
  *    get:
  *      tags:
- *        - tracks
- *      summary: "Get track"
- *      description: Get track detail
+ *        - storage
+ *      summary: "Get list storage"
+ *      description: Obtener la lista de canciones
  *      responses:
  *        '200':
  *          description: Retorna el objeto insertado en la coleccion.
@@ -53,50 +52,16 @@ router.get("/", authMiddleware, getItems);
  *        description: retorna el objeto insertado en la coleccion con stado '201'
  * 
  */
-router.get("/:id", authMiddleware, validateId, getItem);
+router.get("/", getItems);
 /**
- * Post new track
+ * Detalle track
  * @swagger
- * /tracks:
- *    post:
+ * /storage/{id}:
+ *    get:
  *      tags:
- *        - tracks
- *      summary: "Add track"
- *      description: Add new track with detail
- *      responses:
- *        '200':
- *          description: Retorna el objeto insertado en la coleccion.
- *        '422':
- *          description: Error de validacion.
- *      security:
- *        - bearerAuth: []
- *      parameters:
- *        -  in: "body"
- *           name: "body"
- *           description: "parametros requeridos para insertar comentrario"
- *           required: true
- *           schema:
- *              $ref: "#/definitions/track"
- *    responses:
- *      '201':
- *        description: retorna el objeto insertado en la coleccion con stado '201'
- */
-router.post(
-  "/",
-  authMiddleware,
-  authRolMiddleware(["admin"]),
-  validateObjectDataCreate,
-  createItem
-);
-/**
- * Upadte new track
- * @swagger
- * /tracks/{id}:
- *    put:
- *      tags:
- *        - tracks
- *      summary: "Update track"
- *      description: Update track with detail
+ *        - storage
+ *      summary: "Detalle track"
+ *      description: Detalle track with detail
  *      responses:
  *        '200':
  *          description: Retorna el objeto insertado en la coleccion.
@@ -121,16 +86,16 @@ router.post(
  *      '201':
  *        description: retorna el objeto insertado en la coleccion con stado '201'
  */
-router.put("/:id", authMiddleware, validateObjectDataUpdate, updateItem);
+router.get("/:id", validateId, getItem);
 /**
- * Delete track
+ * Delete storage
  * @swagger
- * /tracks/{id}:
+ * /storage/{id}:
  *    delete:
  *      tags:
- *        - tracks
- *      summary: "Delete track"
- *      description: Delete track detail
+ *        - storage
+ *      summary: "Delete storage"
+ *      description: Delete storage detail
  *      responses:
  *        '200':
  *          description: Retorna el objeto insertado en la coleccion.
@@ -150,6 +115,8 @@ router.put("/:id", authMiddleware, validateObjectDataUpdate, updateItem);
  *        description: retorna el objeto insertado en la coleccion con stado '201'
  * 
  */
-router.delete("/:id", authMiddleware, validateId, deleteItem);
+router.delete("/:id", validateId, deleteItem);
+
+
 
 module.exports = router;

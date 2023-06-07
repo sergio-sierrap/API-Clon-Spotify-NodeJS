@@ -1,4 +1,4 @@
-const { verifyToken } = require("../../services/handleJwt");
+const { verifyToken } = require("../../services/handleToken");
 const { handleErrorResponse, handleHttpError } = require("../../services/handleError");
 
 const checkAuth = async (req, res, next) => {
