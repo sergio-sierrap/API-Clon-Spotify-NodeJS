@@ -1,5 +1,5 @@
 const { check } = require("express-validator");
-const { validateResult } = require("../../services/handleValidator");
+const { validateResult } = require("../../src/services/handleValidator");
 const validateObjectDataCreate = [
   check("name").exists().notEmpty(),
   check("album").exists().notEmpty(),

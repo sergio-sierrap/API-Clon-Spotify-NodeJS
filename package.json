@@ -1,5 +1,5 @@
 {
-  "name": "curso_codigo_node",
+  "name": "api-spotify-nodejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,10 +9,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "sergio_sierrap",
   "license": "ISC",
   "dependencies": {
-    "@slack/webhook": "^6.1.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -23,15 +22,12 @@
     "mongoose-aggregate-paginate-v2": "^1.0.6",
     "mongoose-delete": "^0.5.4",
     "mongoose-paginate-v2": "^1.6.3",
-    "morgan-body": "^2.6.6",
     "multer": "^1.4.5-lts.1",
-    "mysql2": "^2.3.3",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
-    "sequelize": "^6.17.0",
     "strip-ansi": "^7.0.1",
     "swagger-jsdoc": "^6.1.0",
-    "swagger-ui-express": "^4.3.0",
+    "swagger-ui-express": "^4.6.3",
     "validator": "^13.7.0"
   },
   "devDependencies": {
