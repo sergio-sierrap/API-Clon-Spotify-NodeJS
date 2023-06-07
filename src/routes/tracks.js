@@ -7,13 +7,13 @@ const {
   createItem,
   deleteItem,
 } = require("../controllers/tracks");
-const authMiddleware = require("../../backend/middleware/auth");
-const authRolMiddleware = require("../../backend/middleware/rol");
+const authMiddleware = require("../backend/middleware/auth");
+const authRolMiddleware = require("../backend/middleware/rol");
 const {
   validateId,
   validateObjectDataCreate,
   validateObjectDataUpdate,
-} = require("../../backend/validators/tracks");
+} = require("../backend/validators/tracks");
 /**
  * Get all tracks
  * @swagger

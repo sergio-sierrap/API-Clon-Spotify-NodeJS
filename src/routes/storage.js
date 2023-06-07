@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { getItem, getItems, createItem, deleteItem } = require("../controllers/storage");
-const { validateId } = require("../../backend/validators/storage");
-const { upload } = require("../../services/handleStore");
+const { validateId } = require("../backend/validators/storage");
+const { upload } = require("../services/handleStore");
 /**
  * Upload file storage
  * @swagger

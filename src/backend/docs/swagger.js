@@ -82,8 +82,9 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: ["../../src/routes/*.js"],
+  apis: ["../../routes/*.js"]
 };
 
 const openapiSpecification = swaggerJsdoc(options);
+console.log(openapiSpecification)
 module.exports = openapiSpecification;
