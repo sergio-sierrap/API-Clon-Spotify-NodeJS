@@ -1,7 +1,7 @@
 require("dotenv").config({
   path: `./env/${process.env.NODE_ENV}.env`
 });
-// const config = require('./src/config/config.' + process.env.NODE_ENV + '.js');
+
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
@@ -13,9 +13,8 @@ app.use(express.json());
 app.use(express.static("storage"));
 
 const port = process.env.PORT || 9999;
-console.log(port);
 const NODE_ENV = process.env.NODE_ENV
-console.log(NODE_ENV);
+
 /**
  * API - Documentation
  */
