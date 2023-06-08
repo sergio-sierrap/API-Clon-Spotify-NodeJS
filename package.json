@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=prod node ./app.js",
     "dev": "cross-env NODE_ENV=dev nodemon ./app.js",
-    "test": "cross-env NODE_ENV=test jest --coverage --runInBand"
+    "test": "cross-env NODE_ENV=test jest --coverage --runInBand --silent"
   },
   "keywords": [],
   "author": "sergio_sierrap",

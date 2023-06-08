@@ -10,7 +10,7 @@ const dbConnectNoSql = require("./src/backend/database/mongo");
 const swaggerSpec = require("./src/backend/docs/swagger");
 app.use(cors());
 app.use(express.json());
-app.use(express.static("storage"));
+app.use(express.static("public"));
 
 const port = process.env.PORT || 9999;
 const NODE_ENV = process.env.NODE_ENV
