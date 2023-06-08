@@ -32,6 +32,5 @@ const options = {
 }
 
 const openapiSpecification = swaggerJsdoc(options);
-console.log(openapiSpecification)
 
 module.exports = openapiSpecification;
