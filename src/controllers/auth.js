@@ -1,6 +1,6 @@
-const { encrypt, compare } = require("../services/handleJwt");
+const { encrypt, compare } = require("../services/hashingService");
 const {handleHttpError,handleErrorResponse,} = require("../services/handleError");
-const { tokenSign } = require("../services/handleToken");
+const { tokenSign } = require("../services/jwtService");
 const { userModel } = require("../models/users");
 const { matchedData } = require("express-validator");
 

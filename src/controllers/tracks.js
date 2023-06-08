@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../services/handleError");
 const { tracksModel } = require("../models/tracks");
-const optionsPaginate = require("../backend/database/mongoPaginate");
+const optionsPaginate = require("../backend/database/paginationParams");
 
 /**
  * Get detail by single row

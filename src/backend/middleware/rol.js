@@ -1,4 +1,4 @@
-const { verifyToken } = require("../../services/handleToken");
+const { verifyToken } = require("../../services/jwtService");
 const { handleErrorResponse } = require("../../services/handleError");
 const { userModel } = require("../../models/users");
 
