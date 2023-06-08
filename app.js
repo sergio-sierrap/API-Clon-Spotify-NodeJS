@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("storage"));
 
+const NODE_ENV = process.env.NODE_ENV;
 const port = process.env.PORT || 3000;
 
 /**
@@ -22,8 +23,13 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
  */
 app.use("/api", require("./src/routes"));
 
-app.listen(port, () =>
-  console.log(`Backend App is running at http://localhost:${port} in development mode`)
+if (NODE_ENV !== 'test'){
+  app.listen(port, () =>
+  console.log(`Backend App is running at http://localhost:${port} in ${NODE_ENV} mode`)
 );
+}
+
 
 dbConnectNoSql();
+
+module.exports = app;
