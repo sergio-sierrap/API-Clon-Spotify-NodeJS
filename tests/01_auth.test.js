@@ -7,7 +7,7 @@ beforeAll(async () => {
     await userModel.deleteMany({});
   });
   
-  test("It should return a 404 - Login: User doesn't exist", async () => {
+  test("It should return a 404 - [Auth-Login]: User doesn't exist", async () => {
     const response = await request(app)
       .post("/api/auth/login")
       .send(testAuthLogin);
@@ -15,7 +15,7 @@ beforeAll(async () => {
     expect(response.statusCode).toEqual(404);
   });
   
-  test("It should return a 201 - Login: User register succesfully", async () => {
+  test("It should return a 201 - [Auth-Register]: User register succesfully", async () => {
     const response = await request(app)
       .post("/api/auth/register")
       .send(testAuthRegister);
@@ -27,7 +27,7 @@ beforeAll(async () => {
   });
   
   
-  test("It should return a 401 - Login: Invalid password", async () => {
+  test("It should return a 401 - [Auth-Login]: Invalid password", async () => {
     const newTestAuthLogin = {...testAuthLogin, password:"22222222"}
     const response = await request(app)
       .post("/api/auth/login")
@@ -36,7 +36,7 @@ beforeAll(async () => {
     expect(response.statusCode).toEqual(401);
   });
   
-  test("It should return a 200 - Login: User login Successfully", async () => {
+  test("It should return a 200 - [Auth-Login]: User login Successfully", async () => {
     const response = await request(app)
       .post("/api/auth/login")
       .send(testAuthRegister);

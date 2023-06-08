@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 const port = process.env.PORT || 9999;
-const NODE_ENV = process.env.NODE_ENV
+const NODE_ENV = process.env.NODE_ENV;
+console.log(NODE_ENV);
 
 /**
  * API - Documentation
@@ -31,6 +32,7 @@ if (NODE_ENV !== 'test'){
 );
 }
 
+console.log(`Backend App is running at http://localhost:${port} in ${NODE_ENV} mode`)
 dbConnectNoSql();
 
 module.exports = app;
