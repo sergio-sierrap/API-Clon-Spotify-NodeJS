@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const config = require('../config/config.' + process.env.NODE_ENV + '.js');
+const config = require('.src/config/config.' + process.env.NODE_ENV + '.js');
 
 const dbConnect = () => {
     // const DB_URI = process.env.DB_URI_PROD
