@@ -4,8 +4,8 @@ const { handleHttpError } = require("../services/handleError");
 const { storageModel } = require("../models/storage");
 //const optionsPaginate = require("../backend/database/paginationParams");
 
-const URL_PUBLIC = process.env.URL_PUBLIC || null;
-const MEDIA_PATH = `${__dirname}/../storage`;
+const PUBLIC_URL= process.env.PUBLIC_URL || null;
+const MEDIA_PATH = `${__dirname}/../../public`;
 
 // /**
 //  * Get detail by single row
@@ -126,6 +126,7 @@ const createItem = async (req, res) => {
     res.send({ data });
   } catch (e) {
     handleHttpError(res, "ERROR_DETAIL_ITEMS");
+    console.log(e);
   }
 };
 
@@ -138,19 +139,20 @@ const deleteItem = async (req, res) => {
   try {
     const { id } = matchedData(req);
     const dataFile = await storageModel.findById(id);
-    const deleteResponse = await storageModel.delete({ _id: id });
+    const deleteResponse = await storageModel.deleteOne({ _id: id });
+    // const deleteCount = deleteResponse.matchedCount;
     const { filename } = dataFile;
     const filePath = `${MEDIA_PATH}/${filename}`; //TODO c:/miproyecto/file-1232.png
 
-    // fs.unlinkSync(filePath);
+    fs.unlinkSync(filePath);
     const data = {
-      filePath,
-      deleted: deleteResponse.matchedCount,
+      deleted: deleteResponse.deletedCount,
     };
 
     res.send({ data });
   } catch (e) {
     handleHttpError(res, "ERROR_DETAIL_ITEMS");
+    console.log(e);
   }
 };
 
