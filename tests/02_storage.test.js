@@ -1,4 +1,5 @@
 const request = require("supertest");
+const mongoose = require("mongoose");
 const app = require("../app");
 const { tokenSign } = require("../src/services/jwtService");
 const { testAuthRegister } = require("./helper/helperData")
@@ -8,6 +9,13 @@ let JWT_TOKEN = "";
 const filePath = `${__dirname}/dump/track.mp3`;
 
 beforeAll(async () => {
+  const DB_URI = process.env.DB_URI
+  console.log(DB_URI);
+  mongoose.set("strictQuery", false);
+  await mongoose.connect(DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
   await userModel.deleteMany({});
   await storageModel.deleteMany({});
   const user = userModel.create(testAuthRegister);
@@ -63,3 +71,7 @@ test("It should delete the file", async () => {
   expect(body).toHaveProperty("data");
   expect(body).toHaveProperty("data.deleted", 1);
 });
+
+afterAll(async () => {
+  await mongoose.connection.close();
+})

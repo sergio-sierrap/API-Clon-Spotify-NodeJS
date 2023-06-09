@@ -6,7 +6,10 @@
   "scripts": {
     "start": "cross-env NODE_ENV=prod node ./app.js",
     "dev": "cross-env NODE_ENV=dev nodemon ./app.js",
-    "test": "cross-env NODE_ENV=test jest --coverage --runInBand"
+    "test": "cross-env NODE_ENV=test jest --verbose --coverage --runInBand",
+    "test-auth":"cross-env NODE_ENV=test jest ./tests/01_auth.test.js --verbose",
+    "test-storage":"cross-env NODE_ENV=test jest ./tests/02_storage.test.js --verbose",
+    "test-tracks":"cross-env NODE_ENV=test jest ./tests/03_tracks.test.js --verbose"
   },
   "keywords": [],
   "author": "sergio_sierrap",
