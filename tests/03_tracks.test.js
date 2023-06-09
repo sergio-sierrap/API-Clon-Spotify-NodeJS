@@ -9,14 +9,14 @@ const { testAuthRegisterAdmin, testDataTrack, testStorageRegister } = require(".
 let STORAGE_ID = "";
 let JWT_TOKEN = "";
 
-beforeAll(async () => {
-  await userModel.deleteMany({});
-  await storageModel.deleteMany({});
-  const user = await userModel.create(testAuthRegisterAdmin);
-  const storage = await storageModel.create(testStorageRegister);
-  STORAGE_ID = storage._id.toString();
-  JWT_TOKEN = await tokenSign(user);
-});
+// beforeAll(async () => {
+//   await userModel.deleteMany({});
+//   await storageModel.deleteMany({});
+//   const user = await userModel.create(testAuthRegisterAdmin);
+//   const storage = await storageModel.create(testStorageRegister);
+//   STORAGE_ID = storage._id.toString();
+//   JWT_TOKEN = await tokenSign(user);
+// });
 
 // POST TRACK
 test("It should register a track", async () => {
