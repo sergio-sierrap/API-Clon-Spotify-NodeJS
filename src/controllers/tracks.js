@@ -117,7 +117,7 @@ const { tracksModel } = require("../models/tracks");
 const getItems = async (req, res) => {
   try {
     const user = req.user;
-    const data = await tracksModel.findAllData({});
+    const data = await tracksModel.find({});
     res.send({ data,  user });
   } catch (e) {
     console.log(e)
@@ -137,6 +137,7 @@ const getItem = async (req, res) => {
     const data = await tracksModel.findOneData(id);
     res.send({ data });
   }catch(e){
+    console.Console.log(e);
     handleHttpError(res,"ERROR_GET_ITEM")
   }
 };
@@ -153,6 +154,7 @@ const createItem = async (req, res) => {
     res.status(201);
     res.send({ data });
   } catch (e) {
+    console.log(e);
     handleHttpError(res, "ERROR_CREATE_ITEMS");
   }
 };
@@ -170,6 +172,7 @@ const updateItem = async (req, res) => {
     );
     res.send({ data });
   } catch (e) {
+    console.Console.log(e);
     handleHttpError(res, "ERROR_UPDATE_ITEMS");
   }
 };

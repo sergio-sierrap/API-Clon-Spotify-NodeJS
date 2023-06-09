@@ -33,6 +33,7 @@ const { handleHttpError } = require("../../services/handleError");
 const checkRol = (roles) => (req, res, next) => {
   try {
     const { user } = req;
+    console.log(user);
     const rolesByUser = user.role; //TODO ["user"]
     //TODO: ["admin","manager"]
     const checkValueRol = roles.some((rolSingle) =>
@@ -44,6 +45,7 @@ const checkRol = (roles) => (req, res, next) => {
     }
     next();
   } catch (e) {
+    console.log(e);
     handleHttpError(res, "ERROR_PERMISSIONS", 403);
   }
 };

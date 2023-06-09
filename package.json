@@ -45,6 +45,9 @@
       "/node_modules/"
     ],
     "coverageReporters": ["json", "html", "text-summary"],
-    "coverageDirectory": "./tests/coverage"
+    "coverageDirectory": "./tests/coverage",
+    "testEnvironmentOptions": {
+      "APP_PORT": 3000
+    }
   }
 }

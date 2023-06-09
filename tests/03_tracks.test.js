@@ -1,4 +1,5 @@
 const request = require("supertest");
+const mongoose = require("mongoose");
 const app = require("../app");
 const { tokenSign } = require("../src/services/jwtService");
 const { userModel } = require("../src/models/users");
@@ -9,14 +10,24 @@ const { testAuthRegisterAdmin, testDataTrack, testStorageRegister } = require(".
 let STORAGE_ID = "";
 let JWT_TOKEN = "";
 
-// beforeAll(async () => {
-//   await userModel.deleteMany({});
-//   await storageModel.deleteMany({});
-//   const user = await userModel.create(testAuthRegisterAdmin);
-//   const storage = await storageModel.create(testStorageRegister);
-//   STORAGE_ID = storage._id.toString();
-//   JWT_TOKEN = await tokenSign(user);
-// });
+beforeAll(async () => {
+  const DB_URI = process.env.DB_URI
+  console.log(DB_URI);
+  mongoose.set("strictQuery", false);
+  await mongoose.connect(DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+  await userModel.deleteMany({});
+  await storageModel.deleteMany({});
+  const user = await userModel.create(testAuthRegisterAdmin);
+  console.log(testAuthRegisterAdmin);
+  const storage = await storageModel.create(testStorageRegister);
+  console.log(testStorageRegister);
+  STORAGE_ID = storage._id.toString();
+  JWT_TOKEN = await tokenSign(user);
+  console.log(JWT_TOKEN);
+});
 
 // POST TRACK
 test("It should register a track", async () => {
@@ -72,3 +83,10 @@ test("It should delete the track", async () => {
   expect(body).toHaveProperty("data");
   expect(body).toHaveProperty("data.deleted", 1);
 });
+
+afterAll(async () => {
+  await userModel.deleteMany({});
+  await storageModel.deleteMany({});
+  await tracksModel.deleteMany({});
+  await mongoose.connection.close();
+})
